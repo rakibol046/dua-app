@@ -2,7 +2,8 @@
 
 export default function Error({ error, reset }) {
   return (
-    <div className="rounded-2xl bg-panel border border-line glass-card p-10 text-center flex flex-col items-center gap-3">
+    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="w-full max-w-md rounded-2xl bg-panel border border-line glass-card p-10 text-center flex flex-col items-center gap-3">
       <h2 className="text-xl font-bold">Something went wrong</h2>
       <p className="text-sm text-muted">{error.message}</p>
       <button
@@ -12,6 +13,7 @@ export default function Error({ error, reset }) {
       >
         Try again
       </button>
+    </div>
     </div>
   );
 }

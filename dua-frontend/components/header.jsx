@@ -1,29 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { useTheme } from "next-themes";
-import { BellIcon, ChevronDownIcon, MoonIcon, SearchIcon, SunIcon } from "./icons";
+import { useEffect, useRef } from "react";
+import { BellIcon, ChevronDownIcon, SearchIcon } from "./icons";
+import ThemeToggle from "./theme-toggle";
 
 const roundButton =
   "shrink-0 w-10 h-10 rounded-full border border-line bg-field flex items-center justify-center text-muted hover:text-ink transition-colors";
-
-function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  const isDark = !mounted || resolvedTheme === "dark";
-
-  return (
-    <button
-      type="button"
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className={roundButton}
-    >
-      {isDark ? <SunIcon className="w-4 h-4" /> : <MoonIcon className="w-4 h-4" />}
-    </button>
-  );
-}
 
 export default function Header() {
   const searchRef = useRef(null);
@@ -73,7 +55,7 @@ export default function Header() {
           </span>
         </div>
 
-        <ThemeToggle />
+        <ThemeToggle className={roundButton} />
         <button type="button" aria-label="Notifications" className={`${roundButton} hidden sm:flex`}>
           <BellIcon className="w-4 h-4" />
         </button>

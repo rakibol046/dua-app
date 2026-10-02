@@ -17,7 +17,7 @@ import {
 // `href` items navigate; the rest are placeholders for upcoming sections.
 const NAV_ITEMS = [
   { label: "Home", Icon: HomeIcon, href: "/", isActive: (p) => p === "/" },
-  { label: "All Duas", Icon: GridIcon, href: "/1", isActive: (p) => /^\/\d+/.test(p) },
+  { label: "All Duas", Icon: GridIcon, href: "/categories", isActive: (p) => p === "/categories" || /^\/\d+/.test(p) },
   { label: "Insights", Icon: BulbIcon },
   { label: "Bookmarks", Icon: BookmarkIcon },
   { label: "Tasbih Counter", Icon: TasbihIcon },
