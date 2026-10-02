@@ -1,16 +1,20 @@
-import Image from "next/image";
-import category from "@/public/category.png";
-import getAllCategories from "@/lib/category/getAllCategories";
-import Link from "next/link";
+import CategoryAccordion from "./accordion";
 
-import Accordion from "./accordion";
+export default async function Categories() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}api/categories-with-subcategories`
+  );
+  if (!res.ok) {
+    throw new Error("Failed to fetch categories");
+  }
+  const categories = await res.json();
 
-export default async function Catrgories() {
-  const categories = await getAllCategories();
   return (
-    <div className="">
-      <h3 className=" text-center bg-primary p-4 font-semibold">Categories</h3>
-      <Accordion />
+    <div className="flex flex-col h-full">
+      <h3 className="px-5 pt-5 pb-3 text-sm font-semibold uppercase tracking-wider text-muted">
+        Categories
+      </h3>
+      <CategoryAccordion categories={categories} />
     </div>
   );
 }
